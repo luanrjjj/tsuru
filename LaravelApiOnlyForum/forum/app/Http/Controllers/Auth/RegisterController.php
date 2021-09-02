@@ -21,6 +21,7 @@ class RegisterController extends Controller
 
 
     public function register(Request $request) {
+        $data = $request->only('name', 'email', 'password');
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
@@ -28,7 +29,7 @@ class RegisterController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json(['error' => $validator->messages()], 200);
         }
 
         $user = User::create(array_merge(

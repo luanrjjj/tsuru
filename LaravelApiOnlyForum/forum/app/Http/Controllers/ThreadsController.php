@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Thread;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadsController extends Controller
 {
-    //
+
+   
     public function index()
     {
         return Thread::all();
@@ -20,4 +22,6 @@ class ThreadsController extends Controller
         $thread = Thread::create($request->all());
         return response()->json($thread,201);
     }
+
+    
 }

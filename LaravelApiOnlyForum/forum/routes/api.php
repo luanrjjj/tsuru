@@ -6,7 +6,7 @@ use App\Http\Controllers\ThreadsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\AuthController;
+
 
 
 Route::post('/register',[RegisterController::class,'register']);
@@ -15,9 +15,7 @@ Route::post('login',[LoginController::class,'login']);
 
 
 Route::group([
-    'middleware'=> 'api',
-    'prefix'=>'auth'
-],function($router){
+    'middleware'=> ['jwt.verify']],function(){
 
 Route::get('/threads', [ThreadsController::class, 'index'])->name('threads.index');
 
