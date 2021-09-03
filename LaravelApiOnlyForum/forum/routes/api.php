@@ -12,12 +12,12 @@ use App\Http\Controllers\Auth\LoginController;
 Route::post('/register',[RegisterController::class,'register']);
 
 Route::post('login',[LoginController::class,'login']);
-
+Route::get('/threads', [ThreadsController::class, 'index'])->name('threads.index');
 
 Route::group([
     'middleware'=> ['jwt.verify']],function(){
 
-Route::get('/threads', [ThreadsController::class, 'index'])->name('threads.index');
+
 
 
 Route::get('/threads/{thread}', [ThreadsController::class, 'show']);

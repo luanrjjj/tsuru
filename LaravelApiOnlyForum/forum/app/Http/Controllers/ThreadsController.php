@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class ThreadsController extends Controller
 {
 
-   
+
     public function index()
     {
         return Thread::all();
