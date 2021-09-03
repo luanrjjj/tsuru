@@ -7,8 +7,6 @@ const Home: NextPage = () => {
 return (
   <>
   <Forum/>
-  
-  
   </>
 )
 }

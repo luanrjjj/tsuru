@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 
 
 
@@ -19,21 +19,40 @@ import {
 } from './styles'
 
 import logoImg from '../../assets/images/origami.png'
-
+import api from '../../services/api';
 
 interface Post {
   id:string;
   title:string;
   
+}
+
+
+interface Thread {
+  id:string;
+  title:string;
   
+}
+
+interface Threads {
+  threads:Thread[]
 }
 
 interface Posts {
   posts:Post[]
 }
 const Forum:React.FC = () => {
-
+ const [threads,setThreads] = useState<Thread[]>([])
   const posts:any = [{"id":"1","title":"Novo Experimento Utilizando ReactJS"},{"id":"1","title":"Novo Experimento Utilizando ReactJS"}];
+  
+
+  useEffect(() => {
+     api.get('/api/threads').then(response=>  {
+      setThreads(response.data);
+    })
+  },[])
+
+console.log(threads)
 
   return (
     <>
@@ -43,9 +62,9 @@ const Forum:React.FC = () => {
           <HeaderLogo><img src={logoImg.src}></img></HeaderLogo>
           <HeaderContent>
             <span>Home</span>
-            <span>Home</span>
-            <span>Home</span>
-            <span>Home</span>
+            <span>Posts </span>
+            <span>Profile</span>
+            <span>Log Out</span>
 
           
             
