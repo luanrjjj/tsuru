@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
-
-
+import {BsFillChatFill} from 'react-icons/bs';
+import {AiFillEye} from 'react-icons/ai';
 
 import {
   Container,
@@ -10,15 +10,17 @@ import {
   HeaderContent,
   HeaderLogo,
   Menu,
-  Post,
-  Posts,
-  PostsSection,
-  Sticky
+  Sticky,
+  Thread,
+  Threads,
+  ThreadsSection,
+  TitleThread
   
  
 } from './styles'
 
-import logoImg from '../../assets/images/origami.png'
+import logoImg from '../../assets/images/origami.png';
+import userImg from '../../assets/images/user.png';
 import api from '../../services/api';
 
 interface Post {
@@ -31,6 +33,13 @@ interface Post {
 interface Thread {
   id:string;
   title:string;
+  body:string;
+  created_at:string;
+  updated_id:string;
+  creator: {
+    name:string;
+  };
+  category:string;
   
 }
 
@@ -105,23 +114,42 @@ console.log(threads)
               </Sticky>
               
             </Menu>
-            <PostsSection>
-            <Posts>
+            <ThreadsSection>
+            <Threads>
            
                   <ol>
-                    {posts.map(({ id, title }:Post) => (
-                       <Post>
+                    {threads.map(({ id, title,body,created_at,creator,category }:Thread) => (
+                       <Thread>
+                         <div className="userImg">
+                           <div>
+                          <img src={userImg.src}></img>
+                          </div>
+                          </div>
                           <li key={id}>
-                            <div>
-                              <span>{title}</span>
-                            </div>
+                         
+                            <TitleThread>
+                              <h1>{title}</h1>
+                              <div>
+                              <a>{category}</a>
+                              <div className="RepliesCount">
+                                <p>10</p>
+                                <BsFillChatFill/>
+                              </div>
+                              <div className="VisualizationsCount">
+                               <p>20</p>
+                                <AiFillEye className="ChatIcon"/>
+                              </div>
+                              </div>
+                              </TitleThread>
+                              <p>{body}</p>                           
+                            <p>{creator.name}</p>
                           </li>
-                          </Post>
+                          </Thread>
                         ))}
                     </ol>
                    
-                  </Posts>
-                  </PostsSection>
+                  </Threads>
+                  </ThreadsSection>
                   </ContentSection>
           </ContainerContent>
           
