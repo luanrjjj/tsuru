@@ -4,6 +4,7 @@ namespace Database\Factories;
 use App\Models\User;
 use App\Models\Thread;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 class ThreadFactory extends Factory
 {
@@ -25,7 +26,10 @@ class ThreadFactory extends Factory
 
                 'user_id'=> User::factory(),
                 'title'=> $this->faker->sentence,
-                'body'=>$this->faker->paragraph
+                'body'=>$this->faker->paragraph,
+                'category'=>Arr::random(['afim','polinomios','logaritmos','exponencial','modulo','radiciação'.'potenciação'])
+                
+                
     
             
         ];

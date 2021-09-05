@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class Thread extends Model
 {
@@ -40,7 +41,7 @@ class Thread extends Model
     public function getRouteKeyName() {
         return 'slug';
     }
-
+/*
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
@@ -58,4 +59,5 @@ class Thread extends Model
     {
         return Str::slug($string) . '-' . Str::random(8);
     }
+    */
 }

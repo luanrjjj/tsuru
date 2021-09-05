@@ -19,6 +19,7 @@ class CreateThreadsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->timestamps();
+            $table->string('category');
         });
     }
 

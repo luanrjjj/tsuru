@@ -19,9 +19,14 @@ class ThreadsController extends Controller
         return Thread::find($id);
     }
     public function store(Request $request) {
-        $thread = Thread::create($request->all());
-        return response()->json($thread,201);
+        $request -> validate ([
+       'title'=>['required'],
+       'body'=>['required'],
+       'category_id'=> ['required']
+       ]);
     }
+
+    
 
     
 }

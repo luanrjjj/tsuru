@@ -23,6 +23,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'avatar'
     ];
 
     /**
@@ -49,4 +50,12 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims() {
         return [];
     }  
+/*
+    public function getAvatarAttribute() 
+    
+    {
+        $url_avatar = 'https://www.google.com/search?q=robot+avatar&client=ubuntu&hs=cyT&channel=fs&sxsrf=AOaemvJsPsIueu2HGJH-P_l4FeimWEpQrQ:1630820483971&tbm=isch&source=iu&ictx=1&fir=in6VgujGu0xNdM%252Ct8U3mRpzBsid5M%252C_&vet=1&usg=AI4_-kTSyzRDoKNItO3LjVaUGj6Q2nkDKQ&sa=X&ved=2ahUKEwj2sI7dj-fyAhXqqpUCHXbJAnMQ9QF6BAgIEAE#imgrc=in6VgujGu0xNdM';
+        return $url_avatar;
+    }
+    */
 }
