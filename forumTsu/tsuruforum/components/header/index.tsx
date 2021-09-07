@@ -25,6 +25,7 @@ import api from '../../services/api';
 import dynamic from 'next/dynamic';
 
 const DynamicComponent = dynamic(()=> import('../../components/editor/index'),{ssr:false});
+const DynamicComponent2 = dynamic(()=> import('../../components/editorversion2/index'),{ssr:false});
 import EditorModal from '../editor/index';
 
 interface Post {
@@ -56,7 +57,7 @@ interface Posts {
 }
 const Forum:React.FC = () => {
  const [threads,setThreads] = useState<Thread[]>([])
-  const posts:any = [{"id":"1","title":"Novo Experimento Utilizando ReactJS"},{"id":"1","title":"Novo Experimento Utilizando ReactJS"}];
+ 
   
 
   useEffect(() => {
@@ -158,7 +159,7 @@ console.log(threads)
           </ContainerContent>
           
           </Container>
-          <DynamicComponent/>
+          <DynamicComponent2/>
           </>
   );
 }
