@@ -22,6 +22,10 @@ import {
 import logoImg from '../../assets/images/origami.png';
 import userImg from '../../assets/images/user.png';
 import api from '../../services/api';
+import dynamic from 'next/dynamic';
+
+const DynamicComponent = dynamic(()=> import('../../components/editor/index'),{ssr:false});
+import EditorModal from '../editor/index';
 
 interface Post {
   id:string;
@@ -154,6 +158,7 @@ console.log(threads)
           </ContainerContent>
           
           </Container>
+          <DynamicComponent/>
           </>
   );
 }
