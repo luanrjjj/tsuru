@@ -2,6 +2,8 @@ import React, {useEffect,useState} from "react";
 import {BsFillChatFill} from 'react-icons/bs';
 import {AiFillEye} from 'react-icons/ai';
 
+
+
 import {
   Container,
   ContainerContent,
@@ -26,7 +28,11 @@ import dynamic from 'next/dynamic';
 
 const DynamicComponent = dynamic(()=> import('../../components/editor/index'),{ssr:false});
 const DynamicComponent2 = dynamic(()=> import('../../components/editorversion2/index'),{ssr:false});
+const DynamicComponent3 = dynamic(()=> import('../../components/editorversion3/index'),{ssr:false});
 import EditorModal from '../editor/index';
+
+
+
 
 interface Post {
   id:string;
@@ -57,7 +63,7 @@ interface Posts {
 }
 const Forum:React.FC = () => {
  const [threads,setThreads] = useState<Thread[]>([])
- 
+
   
 
   useEffect(() => {
@@ -120,6 +126,8 @@ console.log(threads)
               
             </Menu>
             <ThreadsSection>
+           
+      
             <Threads>
            
                   <ol>
@@ -158,8 +166,10 @@ console.log(threads)
                   </ContentSection>
           </ContainerContent>
           
+          
+          
           </Container>
-          <DynamicComponent2/>
+          
           </>
   );
 }
