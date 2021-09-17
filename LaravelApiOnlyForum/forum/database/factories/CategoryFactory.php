@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 use App\Models\User;
-use App\Models\Thread;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
-class ThreadFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Thread::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -24,10 +24,9 @@ class ThreadFactory extends Factory
     {
         return [
 
-                'user_id'=> User::factory(),
-                'title'=> $this->faker->sentence,
-                'body'=>$this->faker->paragraph,
-                'category'=>Arr::random(['afim','polinomios','logaritmos','exponencial','modulo','radiciação'.'potenciação'])           
+                'id'=> Category::factory(),
+                
+                'category'=>$this->faker-> state()       
             
         ];
     }

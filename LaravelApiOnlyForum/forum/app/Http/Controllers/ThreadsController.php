@@ -14,6 +14,7 @@ class ThreadsController extends Controller
     {
         return Thread::all();
         
+        
     }
     public function show(Thread $id) {
         return Thread::find($id);
@@ -22,11 +23,22 @@ class ThreadsController extends Controller
         $request -> validate ([
        'title'=>['required'],
        'body'=>['required'],
-       'category_id'=> ['required']
+       'category'=> ['required']
+        
        ]);
+
+       $thread = Thread::create([
+        'user_id' => Auth::id(),
+        'category' => $request['category'],
+        'title' => $request['title'],
+        'body' => $request['body']
+        ]);
+
+        if ($request->expectsJson()) {
+            return response($thread);
+        }
     }
 
-    
 
     
 }

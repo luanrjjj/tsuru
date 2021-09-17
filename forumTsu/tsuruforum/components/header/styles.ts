@@ -16,8 +16,8 @@ max-width:1050px;
 
 `
 export const Header = styled.header `  
-  height:40px;
-  
+  height:60px;
+  background-color:rgb(46, 68, 105);
   
 `;
 
@@ -29,20 +29,23 @@ export const HeaderLogo = styled.div`
   position:absolute;
 
   >img{
-    height: 29px;
-    margin-top:7px;
+    height: 36px;
+    margin-top:10px;
+    margin-left:10px;
   }
   
 `
 export const HeaderContent = styled.div `
   float:right;
-  margin-top:7px;
+  margin-top:15px;
   
   
 
 span {
   text-decoration: none;
   margin-right:10px;
+  color:#FFF;
+  font-size: 23px;
   
   
   
@@ -50,7 +53,7 @@ span {
 
 
 & + a { 
-  margin-left:5px;
+  margin-left:10px;
 }
 }
 `
@@ -257,5 +260,11 @@ export const Thread = styled.div `
     }
 
   `
-    
+  
+  export const FiltersSection = styled.div `
+      justify-content: space-between;
+      display:flex;
+      margin-bottom:2rem;
+
+  `
 ;

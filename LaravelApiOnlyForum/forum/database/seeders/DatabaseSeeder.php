@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
 
         $threads = \App\Models\Thread::factory()->count(50)->create();
         $threads->each(function($thread) { \App\Models\Reply::factory()->count(10)->create(['thread_id'=> $thread->id]);  });
+        $categories = \App\Models\Category::factory()->count(10)->create();
     }
 }

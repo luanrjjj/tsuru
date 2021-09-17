@@ -38,6 +38,7 @@ const TextEditor: React.FC<Props> = ({ value, onChange, placeholder }) => {
   return (
     <>
       <ReactQuill
+      style={{ height: "300px" }}
         theme="snow"
         value={value || ''}
         modules={modules}

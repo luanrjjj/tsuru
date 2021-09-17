@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
+
 export const Header = styled.header `  
-  height:40px;
-  
+  height:60px;
+  background-color:rgb(46, 68, 105);
   
 `;
 
@@ -14,20 +15,23 @@ export const HeaderLogo = styled.div`
   position:absolute;
 
   >img{
-    height: 29px;
-    margin-top:7px;
+    height: 36px;
+    margin-top:10px;
+    margin-left:10px;
   }
   
 `
 export const HeaderContent = styled.div `
   float:right;
-  margin-top:7px;
+  margin-top:15px;
   
   
 
 span {
   text-decoration: none;
   margin-right:10px;
+  color:#FFF;
+  font-size: 23px;
   
   
   
@@ -35,17 +39,20 @@ span {
 
 
 & + a { 
-  margin-left:5px;
+  margin-left:10px;
 }
 }
 `
-export const ThreadCreateSection = styled.div ` 
 
-    width:100%;
+export const ThreadCreateSection = styled.div ` 
+    margin-top:3rem;
+    width:800px;
     padding-bottom:2em;
+    left:20%;
+    margin-bottom:20px;
 
     
-    border-width:0;
+    border-width:5px;
     border-style:solid;
     border-color:#e2e8f0;
 
@@ -55,6 +62,10 @@ export const ThreadCreateSection = styled.div `
     position:relative;
     
 
+h1 {
+  justify-content:center;
+  display:flex;
+}
 
 
 `
