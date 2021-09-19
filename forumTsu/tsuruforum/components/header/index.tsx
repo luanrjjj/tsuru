@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
 import {BsFillChatFill} from 'react-icons/bs';
-import {AiFillEye} from 'react-icons/ai';
+import {AiFillEye,AiOutlineSearch} from 'react-icons/ai';
 
 
 
@@ -11,7 +11,9 @@ import {
   FiltersSection,
   Header,
   HeaderContent,
+  HeaderLinks,
   HeaderLogo,
+  HeaderTitle,
   Menu,
   Sticky,
   Thread,
@@ -24,13 +26,7 @@ import {
 
 import logoImg from '../../assets/images/origami.png';
 import userImg from '../../assets/images/user.png';
-11 
-import dynamic from 'next/dynamic';
 
-const DynamicComponent = dynamic(()=> import('../../components/editor/index'),{ssr:false});
-const DynamicComponent2 = dynamic(()=> import('../../components/editorversion2/index'),{ssr:false});
-const DynamicComponent3 = dynamic(()=> import('../editorversion3/quill.imageUploader'),{ssr:false});
-import EditorModal from '../editor/index';
 
 import api from '../../services/api';
 
@@ -81,15 +77,25 @@ console.log(threads)
     <Container>
     <ContainerContent>
         <Header>
-          <HeaderLogo><img src={logoImg.src}></img></HeaderLogo>
-          <HeaderContent>
-            <span>Home</span>
-            <span>Posts </span>
-            <span>Profile</span>
-            <span>Log Out</span>
 
-          
+          <HeaderLogo><img src={logoImg.src}></img></HeaderLogo>
+          <HeaderTitle>
+          <span>Cerebriz</span>
+          </HeaderTitle>
+
+          <HeaderLinks>
+            <span>Home</span>
+            <span>Profile </span>
+            <span>Cursos</span>
             
+            
+          </HeaderLinks>
+         
+          <HeaderContent>
+            <div className="HeaderIcons">
+           <AiOutlineSearch size={25} color={"#FFF"}/>
+           
+           </div>
             </HeaderContent>
           
         </Header>
@@ -158,7 +164,7 @@ console.log(threads)
                               </div>
                               </div>
                               </TitleThread>
-                              <p>{body}</p>                           
+                                                       
                             <p>{creator.name}</p>
                           </li>
                           </Thread>

@@ -18,6 +18,8 @@ max-width:1050px;
 export const Header = styled.header `  
   height:60px;
   background-color:rgb(46, 68, 105);
+  display:flex;
+  justify-content:space-between;
   
 `;
 
@@ -36,9 +38,13 @@ export const HeaderLogo = styled.div`
   
 `
 export const HeaderContent = styled.div `
-  float:right;
-  margin-top:15px;
   
+  margin-top:17px;
+  margin-right:20px;
+
+.HeaderIcons {
+  
+}
   
 
 span {
@@ -58,6 +64,40 @@ span {
 }
 `
 
+export const HeaderTitle = styled.div `
+    display:flex;
+    margin-left:50px;
+    margin-top:10px;
+    color:#FFF;
+    font-weight:700;
+    font-size:25px;
+
+
+`
+export const HeaderLinks = styled.div `
+margin-top:15px;
+margin:auto;
+
+  
+  
+
+  span {
+    text-decoration: none;
+    margin-right:10px;
+    color:#FFF;
+    font-size: 23px;
+    
+    
+    
+    
+  
+  
+  & + a { 
+    margin-left:10px;
+  }
+  }
+`
+
 export const ContentSection = styled.div `
   display: flex;
   flex-direction:row;
@@ -68,11 +108,11 @@ export const ContentSection = styled.div `
 `
 
 export const Menu = styled.div `
-  width: 210px;
+  width: 280px;
   top: 60px;
   display:block;
   align-self: flex-start;
-  margin-right: 3rem;
+  margin-right: 1rem;
   
     `
 
@@ -82,9 +122,10 @@ export const Sticky = styled.div `
   line-height:1.5;
 
   button {
-    border-radius: 20px;
+    border-radius: 40px;
     border-style: solid;
     border-width: 1px;
+    box-shadow:rgba(50,138,241);
 
 
     font-size: 0.9rem;
@@ -101,7 +142,7 @@ export const Sticky = styled.div `
     cursor:pointer;
 
     &:hover {
-      color:${shade(0.2,rgba(50,138,241,0.75))}
+      background-color:${shade(0.2,rgba(50,138,241,0.75))}
     }
   }
 
@@ -111,11 +152,13 @@ export const Sticky = styled.div `
     font-size:0px;
     padding:0px;
     margin:0px;
+   
   }
   li {
-    margin-top:10px;
+    margin-top:20px;
     width: 100%;
     font-size:0px;
+ 
     
   }
   a {
@@ -131,11 +174,20 @@ export const Sticky = styled.div `
     padding-right: 1.5rem;
 
     border-radius:0.9rem;
+    border-width:2px;
+    border-color:rgba(0,0,0,.03);
     border-style:solid;
+    font-size:20px;
+
+   
+   
     cursor:pointer;
     
     &:hover {
-      color: ${shade(0.2,'#ff9000')}
+      color: ${shade(0.2,'#ff9000')};
+      border-color:${shade(0.2,'#ff9000')};
+      border-width:1px;
+      border-style:solid;
     }
 
   }
@@ -147,7 +199,7 @@ export const ThreadsSection = styled.div `
   flex: 1 1 0%;
   margin-left: auto;
   margin-right: auto;
-  max-width:1400px;
+  max-width:1000px;
   
  
 `
@@ -157,7 +209,7 @@ export const Threads = styled.div `
 `
 
 export const Thread = styled.div `  
-  height: 140px;
+  height: 100px;
   flex-direction: row;
   margin-bottom: 0.75rem;
 
@@ -166,13 +218,17 @@ export const Thread = styled.div `
   padding-bottom: 1rem;
   padding-top: 1rem;
 
-  background-color: rgba(0,0,0,.01);
+  background-color: rgb(252,252,252);
 
   border-style: solid;
   border-width: 1px;
-  border-radius: 0.9rem;
+  border-radius: 40px;
   cursor: pointer;
   display:flex;
+
+  &:hover {
+    background-color:${shade(0.05,"#FCFCFC")};
+  }
   
   li {
     list-style-type: none;
@@ -201,12 +257,13 @@ export const Thread = styled.div `
     display:flex;
     align-items: flex-start;
     margin-top:-0.25rem;
-    height:30px;
+    height:50px;
 
     h1 {
       padding-right:1.5rem;
-      font-size:16px;
-      width: 1000px;
+      font-size:20px;
+      width: 600px;
+      font-weight:800;
     }
 
     div {
@@ -248,12 +305,13 @@ export const Thread = styled.div `
       text-align:center;
       width:6rem;
       display:block;
-      border: 1px solid;
+      border: 2.5px solid;
       border-color:#F56857;
       border-radius:10px;
       max-width: 100%;
       margin-right:1.5rem;
       margin-left:0.5rem;
+      font-weight:800;
   
       
     }
