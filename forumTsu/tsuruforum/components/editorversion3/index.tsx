@@ -1,76 +1,55 @@
-import React, { useState } from "react";
-import { Button, Form, Input, Typography } from 'antd';
-import ReactQuill from 'react-quill';
+import React, { Component } from "react";
+import ReactQuill, { Quill } from "react-quill";
 import 'react-quill/dist/quill.snow.css';
+// #1 import quill-image-uploader
+import ImageUploader from "./quill.imageUploader";
 
+// #2 register module
+Quill.register("modules/imageUploader", ImageUploader);
 
-interface IPostCreate {
-  body: string;
-}
-
-export default function MyComponent() {
-
-  const [value, setValue] = useState("<p><strong><em><s><u>Hector oscar Pacheco</u></s></em></strong></p> ");
-  const [form] = Form.useForm();
-
-  const modules = {
-    toolbar: [
-      [{ 'header': [1, 2, false] }],
-      ['bold', 'italic', 'underline','strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-      ['link', 'image'],
-      ['clean']
-    ],
+class TextEditor extends Component {
+  constructor(props:any) {
+    super(props);
+    this.state = {
+      text: ""
+    };
   }
 
-  const formats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image'
-  ]
-
-const { Item } = Form;
-const { TextArea } = Input;
-const { Title } = Typography;
-
-const onSubmit = (values: IPostCreate) => {
-    // logic to submit form to server
-    var html = ReactQuill
-    console.log(values.body);
-    form.resetFields();
-  };
-  const handleProcedureContentChange = (content:any, delta:any, source:any, editor:any) => {
-    console.log(content);
+  modules = {
+    // #3 Add "image" to the toolbar
+    toolbar: [["bold", "italic", "image"]],
+    // # 4 Add module and upload function
+   
+    
   };
 
-  return (
-      <>
-      
-    <Title level={5}>Your Post</Title>
+  formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+     // #5 Optinal if using custom formats
+  ];
 
-    <Form layout="vertical" form={form} onFinish={onSubmit}>
-      <Item
-        name="body"
-        rules={[
-          {
-            required: true,
-            message: 'Please enter body of post',
-          },
-        ]}
+  render() {
+    return (
+      <ReactQuill
+        theme="snow"
+        modules={this.modules}
+        formats={this.formats}
+        value={(this.state as any).text}
       >
-        {/* @ts-ignore */}
-    <ReactQuill theme="snow"  value={value || ''} onChange={handleProcedureContentChange}  modules={modules}
-    formats={formats}/>
-
-</Item>
-
-<Item>
-  <Button htmlType="submit" type="primary">
-    Submit
-  </Button>
-</Item> 
-</Form>
-    </>
-  );
+        <div className="my-editing-area" />
+      </ReactQuill>
+    );
+  }
 }
+
+export default TextEditor;

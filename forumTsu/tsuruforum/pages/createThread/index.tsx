@@ -39,12 +39,29 @@ const CreateThreads:React.FC = () => {
   const [value, setValue] = useState();
   const [threadCreated,setThreadCreated] = useState<any>([])
 
-
-  const onSubmit = (values: IPostCreate) => {
+  let formResult:any =[ ]
+   const onSubmit =  async (values: IPostCreate) => {
     // logic to submit form to server
-    setThreadCreated([...threadCreated,values])
+    formResult.push(values)
+    console.log(formResult)
+    let formResultFormatted:any = {
+      'category':formResult[0]?.category,
+      'title':formResult[1]?.Title,
+      'body':formResult[1]?.body
+    }
+    
+
+   
+    
+    console.log('dois',formResultFormatted)
+
+    api.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+    api.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+    
+    await api.post('api/threads/store',formResultFormatted).then(response => {
+      console.log(response)
+    })
     form.resetFields();
-    console.log(threadCreated)
   };
 
   const style = {
@@ -53,13 +70,15 @@ const CreateThreads:React.FC = () => {
     }
   }
 
-
+/*
   useEffect(() => {
     api.get('/api/categories').then(response=>  {
       setCategories(response.data)
      
    })
  },[])
+
+*/
 
 
 
@@ -89,11 +108,11 @@ const CreateThreads:React.FC = () => {
         <Item name ="Title" label ="Título" required tooltip="This is a required field">
           <Input placeholder="Input Placeholder"/>
         </Item>
-        <Form.Item name="category" label="Escolha o assunto" required tooltip="This is a required field">
+        <Form.Item  label="Escolha o assunto" required tooltip="This is a required field">
         <Input.Group compact>
           
         <Select onChange={(value) => {
-      console.log(value)
+      formResult.push({"category":value})
     }} placeholder="Escolha a disciplina">
           <Option value ="Logaritmos">Logaritmos </Option>
           <Option value ="Afim">Função Afim </Option>

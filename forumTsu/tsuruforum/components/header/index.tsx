@@ -29,7 +29,7 @@ import dynamic from 'next/dynamic';
 
 const DynamicComponent = dynamic(()=> import('../../components/editor/index'),{ssr:false});
 const DynamicComponent2 = dynamic(()=> import('../../components/editorversion2/index'),{ssr:false});
-const DynamicComponent3 = dynamic(()=> import('../../components/editorversion3/index'),{ssr:false});
+const DynamicComponent3 = dynamic(()=> import('../editorversion3/quill.imageUploader'),{ssr:false});
 import EditorModal from '../editor/index';
 
 import api from '../../services/api';
