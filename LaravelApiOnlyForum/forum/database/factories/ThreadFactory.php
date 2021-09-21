@@ -27,8 +27,8 @@ class ThreadFactory extends Factory
                 'user_id'=> User::factory(),
                 'title'=> $this->faker->sentence,
                 'body'=>$this->faker->paragraph,
-                'category'=>Arr::random(['afim','polinomios','logaritmos','exponencial','modulo','radiciação'.'potenciação'])           
-            
+                'category'=>Arr::random(['afim','polinomios','logaritmos','exponencial','modulo','radiciação','potenciação']),        
+                'solved'=>Arr::random([true,false])
         ];
     }
 }

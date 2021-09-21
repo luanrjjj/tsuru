@@ -12,7 +12,7 @@ Route::post('/register',[RegisterController::class,'register']);
 
 Route::post('login',[LoginController::class,'login']);
 Route::get('/threads', [ThreadsController::class, 'index'])->name('threads.index');
-
+Route::post('/threads/store', [ThreadsController::class, 'store']);
 
 //Categories 
 Route::get('/categories',[CategoriesController::class,'index']);

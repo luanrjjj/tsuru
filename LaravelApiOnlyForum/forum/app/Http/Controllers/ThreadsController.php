@@ -28,7 +28,7 @@ class ThreadsController extends Controller
        ]);
 
        $thread = Thread::create([
-        'user_id' => Auth::id(),
+        'user_id' =>1,
         'category' => $request['category'],
         'title' => $request['title'],
         'body' => $request['body']
@@ -37,6 +37,7 @@ class ThreadsController extends Controller
         if ($request->expectsJson()) {
             return response($thread);
         }
+        return response($thread);
     }
 
 

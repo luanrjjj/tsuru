@@ -13,6 +13,17 @@ class Thread extends Model
 
     protected $with =['creator'];
     
+    protected $fillable = [
+        'user_id',
+        'title',
+        'category',
+        'body',
+        'solved'
+        
+        
+    ];
+
+    
     public function path()
     {
         return "/threads/{$this->channel->slug}/{$this->slug}";

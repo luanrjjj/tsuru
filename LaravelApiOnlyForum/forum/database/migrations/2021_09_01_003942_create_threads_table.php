@@ -20,6 +20,7 @@ class CreateThreadsTable extends Migration
             $table->text('body');
             $table->timestamps();
             $table->string('category');
+            $table->boolean('solved')->default(0);
         });
     }
 
