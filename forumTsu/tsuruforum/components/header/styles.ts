@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { rgba, shade } from 'polished';
 
 export const Container = styled.div`
+margin-left:auto;
+margin-right:auto;
+padding-bottom:2em;
 
-  
   `
  
 export const ContainerContent = styled.div `
@@ -15,11 +17,20 @@ max-width:1050px;
 */
 
 `
+export const HeaderContainer = styled.header `  
+ max-width:100%;
+ background-color:rgb(46, 68, 105);
+`
+
+
 export const Header = styled.header `  
   height:60px;
-  background-color:rgb(46, 68, 105);
+  margin-left:auto;
+  margin-right:auto;
   display:flex;
   justify-content:space-between;
+  max-width:1050px;
+  min-width:600px;
   
 `;
 
@@ -50,7 +61,7 @@ export const HeaderContent = styled.div `
 span {
   text-decoration: none;
   margin-right:10px;
-  color:#FFF;
+  color:black;
   font-size: 23px;
   
   
@@ -85,7 +96,7 @@ margin:auto;
     text-decoration: none;
     margin-right:10px;
     color:#FFF;
-    font-size: 23px;
+    font-size: 16px;
     
     
     
@@ -104,6 +115,9 @@ export const ContentSection = styled.div `
   margin-top: 30px;
   padding: 40px 30px;
   position: relative;
+  margin-left:auto;
+  margin-right:auto;
+  max-width:1050px;
 
 `
 
@@ -199,7 +213,7 @@ export const ThreadsSection = styled.div `
   flex: 1 1 0%;
   margin-left: auto;
   margin-right: auto;
-  max-width:1000px;
+  max-width:800px;
   
  
 `
@@ -262,7 +276,7 @@ export const Thread = styled.div `
     h1 {
       padding-right:1.5rem;
       font-size:20px;
-      width: 600px;
+      width: 400px;
       font-weight:800;
     }
 
@@ -318,7 +332,27 @@ export const Thread = styled.div `
     }
 
   `
-  
+  export const ThreadDetails = styled.div `
+    display:flex;
+
+    a {
+      margin-left:10px;
+       color:#F56857;
+      outline:none;
+      font-size:0.66rem;
+      text-align:center;
+      width:6rem;
+      display:block;
+      border: 2.5px solid;
+      border-color:#F56857;
+      border-radius:10px;
+      max-width: 100%;
+      margin-right:1.5rem;
+      margin-left:0.5rem;
+      font-weight:800;
+      height:25px;
+    }
+  `
   export const FiltersSection = styled.div `
       justify-content: space-between;
       display:flex;

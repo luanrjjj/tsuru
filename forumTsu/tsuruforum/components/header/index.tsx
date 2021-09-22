@@ -10,6 +10,7 @@ import {
   ContentSection,
   FiltersSection,
   Header,
+  HeaderContainer,
   HeaderContent,
   HeaderLinks,
   HeaderLogo,
@@ -17,6 +18,7 @@ import {
   Menu,
   Sticky,
   Thread,
+  ThreadDetails,
   Threads,
   ThreadsSection,
   TitleThread
@@ -49,6 +51,7 @@ interface Thread {
     name:string;
   };
   category:string;
+  solved:number;
   
 }
 
@@ -70,12 +73,19 @@ const Forum:React.FC = () => {
     })
   },[])
 
+  useEffect(() => {
+    api.get('/api/threads/user').then(response=>  {
+     console.log(response)  
+   })
+ },[])
+
 console.log(threads)
 
   return (
     <>
     <Container>
     <ContainerContent>
+      <HeaderContainer>
         <Header>
 
           <HeaderLogo><img src={logoImg.src}></img></HeaderLogo>
@@ -99,40 +109,10 @@ console.log(threads)
             </HeaderContent>
           
         </Header>
+        </HeaderContainer>
+        <Header></Header>
         <ContentSection>
-            <Menu>
-              <Sticky>
-                <button>New Discussion</button>
-                <ul>
-                  <li>
-                    <a>My Questions</a>
-                  </li>
-                  <li>
-                    <a>My Participation</a>
-                  </li>
-                  <li>
-                    <a>My Best Answers</a>
-                  </li>
-                  <li>
-                    <a>Following</a>
-                  </li>
-                  <li>
-                    <a>Popular this Week</a>
-                  </li>
-                  <li>
-                    <a>Solved</a>
-                  </li>
-                  <li>
-                    <a>Unsolved</a>
-                  </li>
-                  <li>
-                    <a>No replies Yet</a>
-                  </li>
-
-                </ul>
-              </Sticky>
-              
-            </Menu>
+    
             <ThreadsSection>
               <FiltersSection>
 
@@ -141,7 +121,7 @@ console.log(threads)
             <Threads>
            
                   <ol>
-                    {threads.map(({ id, title,body,created_at,creator,category }:Thread) => (
+                    {threads?.map(({ id, title,body,created_at,creator,category,solved }:Thread) => (
                        <Thread>
                          <div className="userImg">
                            <div>
@@ -164,8 +144,11 @@ console.log(threads)
                               </div>
                               </div>
                               </TitleThread>
-                                                       
-                            <p>{creator.name}</p>
+                            <ThreadDetails>                                       
+                              <p>{creator.name}</p>
+                              {solved==1 ? <a>solved</a>:''}
+                            </ThreadDetails>   
+                            <p></p>
                           </li>
                           </Thread>
                         ))}
@@ -179,7 +162,7 @@ console.log(threads)
           
           
           </Container>
-          
+                      
           </>
   );
 }
