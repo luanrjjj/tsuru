@@ -18,9 +18,7 @@ class Thread extends Model
         'title',
         'category',
         'body',
-        'solved'
-        
-        
+        'solved'   
     ];
 
     

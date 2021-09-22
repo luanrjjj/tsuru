@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
+
+
+
 class RegisterController extends Controller
 {
+    const defaultAvatar = 'user.png';
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
@@ -26,7 +30,7 @@ class RegisterController extends Controller
             'name' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|confirmed|min:6',
-            'avatar' => 'required'
+            
         ]);
 
         if($validator->fails()){
@@ -35,7 +39,9 @@ class RegisterController extends Controller
 
         $user = User::create(array_merge(
                     $validator->validated(),
-                    ['password' => bcrypt($request->password)]
+                    ['password' => bcrypt($request->password)],
+                    ['avatar' => self::defaultAvatar]
+                    
                 ));
 
         return response()->json([

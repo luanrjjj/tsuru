@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Thread;
 use Illuminate\Support\Facades\Auth;
 
+
 class ThreadsController extends Controller
 {
 
@@ -17,8 +18,19 @@ class ThreadsController extends Controller
         
     }
     public function show(Thread $id) {
-        return Thread::find($id);
+        return Thread::find($id,1);
     }
+
+    public function myThreads() {
+        $userId = Auth::id();
+        
+        $threads = Thread::where('user_id',$userId)->get();
+
+        return ($threads);
+    }
+
+
+
     public function store(Request $request) {
         $request -> validate ([
        'title'=>['required'],
@@ -28,7 +40,7 @@ class ThreadsController extends Controller
        ]);
 
        $thread = Thread::create([
-        'user_id' =>1,
+        'user_id' =>551,
         'category' => $request['category'],
         'title' => $request['title'],
         'body' => $request['body']

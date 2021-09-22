@@ -36,8 +36,10 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
-    
-
+    public function getId() 
+    {
+        return $this->id;
+    }
     public function getJWTIdentifier() {
         return $this->getKey();
     }
